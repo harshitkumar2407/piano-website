@@ -1,5 +1,5 @@
 var keyContainer = document.querySelector(".LowerContainer")
-const notes = ["A", "B", "C", "D", "E", "F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"]
+const notes = ["A", "B", "C", "D", "E", "F","G","H","I","J","K","L","M","N","O","P"]
 const colors = ["#2498F0", "#3f67deff",  "rgb(143, 185, 221)"]
 
 for (let i = 0; i < keyContainer.clientWidth / 50; i++) {
