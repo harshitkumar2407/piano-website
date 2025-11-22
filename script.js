@@ -42,11 +42,11 @@ addEventListener("keyup", function (det) {
 });
 
 
- function playSound(key) {
-    const audio = new Audio(`S/${key}.mp3`);
-    audio.currentTime = 0;    // restart sound if key pressed again
-    audio.play();
-}
+//  function playSound(key) {
+//     const audio = new Audio(`S/${key}.mp3`);
+//     audio.currentTime = 0;    // restart sound if key pressed again
+//     audio.play();
+// }
 
 
 
@@ -58,6 +58,7 @@ function attachMouseEvents(keyElement) {
     // 👉 Hover in = dull
     keyElement.addEventListener("mouseenter", function () {
         keyElement.style.backgroundColor = "lightgray";
+        playSound(keyElement.innerText);
     });
 
     // 👉 Hover out = normal
@@ -69,4 +70,25 @@ function attachMouseEvents(keyElement) {
     keyElement.addEventListener("click", function () {
         playSound(keyElement.innerText);
     });
+   
+}
+
+function playSound(key) {
+    const allNotes = ["A", "B", "C", "D", "E", "F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"];
+    
+    const soundKeys = [28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63]; // sounds you have
+    
+    key = key.toUpperCase();
+
+    // find index of pressed key in allNotes
+    let index = allNotes.indexOf(key);
+
+    if (index === -1) return; // invalid key
+
+    // repeat pattern using modulo
+    const soundKey = soundKeys[index % soundKeys.length];
+
+    const audio = new Audio(`Sounds/${soundKey}.mp3`);
+    audio.currentTime = 0;
+    audio.play();
 }
